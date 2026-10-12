@@ -39,7 +39,7 @@ const Navbar = () => {
 
   return (
     <>
-     <header className="fixed inset-x-0 top-3 z-50 flex justify-center px-3 sm:top-4 sm:px-4 ">
+     <header className="fixed inset-x-0 top-3 z-100 flex justify-center px-3 sm:top-4 sm:px-4 ">
         <nav className="glass flex w-full max-w-5xl items-center justify-between rounded-full px-4 py-2.5 sm:px-6 transition-colors ">
             <NavLink className="flex gap-2 items-center text-lg font-extrabold tracking-tight" href="">
                  <Clapperboard strokeWidth={1.75} className="text-accent"/>

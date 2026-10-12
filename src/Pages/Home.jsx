@@ -1,7 +1,16 @@
+import { getTrending } from "../api/tmdb"
+import Hero from "../components/Hero"
+import useFetch from "../Hooks/useFetch"
 
 const Home = () => {
+   
+  const trending = useFetch(getTrending, []);
+
+
   return (
-    <div>Home</div>
+    <div>
+      <Hero items={trending.data?.results} loading={trending.loading} />
+    </div>
   )
 }
 
