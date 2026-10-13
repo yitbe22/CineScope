@@ -19,4 +19,8 @@ export const img = (path, size ='w500') => {
 
 export const getTrending = () => request('/trending/all/week');
 
+export const getList = (type, list, page=1) => {
+    request(`/${type}/${list}?page=${page}`)
+}
+
 console.log(getTrending());

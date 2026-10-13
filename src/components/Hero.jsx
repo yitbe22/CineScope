@@ -61,8 +61,6 @@ const Hero = ({items, loading}) => {
                    </div>
          </div>
 
-    
-
         <div className="absolute inset-0 bg-linear-to-t from-bg via-bg/40 to-transparent" />
         <div className="absolute inset-0 bg-linear-to-r from-bg/90 via-bg/30 to-transparent" />
 
