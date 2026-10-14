@@ -1,4 +1,4 @@
-import { img } from "../api/tmdb";
+import { img, titleOf, yearOf} from "../api/tmdb";
 import { Link } from "react-router-dom";
 import { Star, Info } from "lucide-react";
 import { useEffect, useState } from "react";
@@ -17,9 +17,11 @@ const Hero = ({items, loading}) => {
 
    })
 
-   if (!list) return <p>Not found</p>;
+   
 
-   if (loading) return <p className="mx-auto mt-10 text-center">Loading...</p>;
+   if (loading || !list.length) {
+      return <div className="h-[70vh] animate-pulse bg-white/5 md:h-[85vh]" />
+   }
 
    const currentList = list[currentIndex];
 
@@ -31,16 +33,16 @@ const Hero = ({items, loading}) => {
            className="absolute inset-0 size-full object-cover transition-opacity"
            />
 
-         <div className="relative mx-auto h-full flex flex-col justify-end px-4 pb-16 sm:px-8 sm:pb-24 z-50">
+         <div className="relative mx-auto h-full flex flex-col justify-end px-4 pb-12 sm:px-8 sm:pb-16 z-50">
                <div className="max-w-2xl">
                   <div className="flex flex-wrap items-center gap-2 text-sm mb-3">
                      <span className="glass rounded-full font-semibold text-xs uppercase px-3 py-1 tracking-wide">{currentList.media_type}</span>
                      <span className="flex items-center gap-1 font-semibold"><Star strokeWidth={1.5} size={14} fill="#FCC600"
   color="#FCC600"/> {currentList.vote_average.toFixed(1)}</span>
-                     <span className="text-white/60 ">{(currentList.media_type === "tv" ? currentList.first_air_date: currentList.release_date)?.slice(0, 4)}</span>
+                     <span className="text-white/60 ">{yearOf(currentList)}</span>
                   </div>
                   <h1 className="text-3xl font-extrabold leading-tight sm:text-5xl lg:text-6xl">
-                     {currentList.media_type === "tv"? currentList.name: currentList.title}
+                     {titleOf(currentList)}
                   </h1>
                   <p className="text-sm sm:text-base text-white/75 line-clamp-3 mt-4">{currentList.overview}</p>
                   <Link to='/movies/:id' className="mt-6 inline-flex items-center gap-2 rounded-full bg-white px-5 py-2 text-sm text-black font-bold transition hover:bg-white/85"><Info strokeWidth={1.5}/>View details</Link>

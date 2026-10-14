@@ -40,7 +40,8 @@ const Navbar = () => {
   return (
     <>
      <header className="fixed inset-x-0 top-3 z-100 flex justify-center px-3 sm:top-4 sm:px-4 ">
-        <nav className="glass flex w-full max-w-5xl items-center justify-between rounded-full px-4 py-2.5 sm:px-6 transition-colors ">
+        <div className="mx-auto w-full max-w-5xl">
+              <nav className="glass flex items-center justify-between rounded-full px-4 py-2.5 sm:px-6 transition-colors ">
             <NavLink className="flex gap-2 items-center text-lg font-extrabold tracking-tight" href="">
                  <Clapperboard strokeWidth={1.75} className="text-accent"/>
                  <span>CineScope</span>
@@ -67,8 +68,10 @@ const Navbar = () => {
                     {open ? <X strokeWidth={1.75} size={18} /> : <Menu strokeWidth={1.75} size={18} />}
                </button>
             </div>
-            {open && (
-                <div className="glass absolute inset-x-0 top-full flex flex-col gap-1 rounded-3xl mt-2 px-6 py-4 md:hidden">
+            
+        </nav>
+        {open && (
+                <div className="glass inset-x-0 top-full flex flex-col gap-1 rounded-3xl mt-2 px-6 py-4 md:hidden">
                     {searchForm("mb-3", "py-2.5")}
                     {links.map((l) => (
                         <NavLink key={l.to} to={l.to}
@@ -78,7 +81,8 @@ const Navbar = () => {
                     ))}
                 </div>
             )}
-        </nav>
+        </div>
+       
      </header>
      </>
   )

@@ -1,19 +1,41 @@
+
 import { useState, useEffect } from "react";
 
-export default function useFetch(fn , deps = []){
-    const [data, setData] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const [error , setError] = useState(null);
+export default function useFetch(fn, deps = []) {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [tick,setTick] = useState(0);
 
-    useEffect(()=> {
-        fn()
-           .then(setData)
-           .catch(setError)
-           .finally(()=> setLoading(false))
+  useEffect(() => {
+    let isCurrent = true;
 
-    }, deps)
+    setLoading(true);  
+    setError(null);
+    
 
-    return {data ,loading, error}
+    fn()
+      .then((res) => {
+        if (isCurrent) {
+          setData(res);
+        }
+      })
+      .catch((err) => {
+        if (isCurrent) {
+  
+          setError(err);
+        }
+      })
+      .finally(() => {
+        if (isCurrent) {
+          setLoading(false);
+        }
+      });
+
+    return () => {
+      isCurrent = false;
+    };
+  }, [...deps, tick]);
+
+  return { data, loading, error, retry: () => setTick((t) => t+1) };
 }
-
-

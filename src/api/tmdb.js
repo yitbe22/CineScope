@@ -19,8 +19,12 @@ export const img = (path, size ='w500') => {
 
 export const getTrending = () => request('/trending/all/week');
 
-export const getList = (type, list, page=1) => {
+export const getList = (type, list, page=1) => (
     request(`/${type}/${list}?page=${page}`)
-}
+)
+
+export const titleOf = (i) => i.title || i.name || 'Untitled';
+export const dateOf = (i) => i.first_air_date || i.release_date || '';
+export const yearOf = (i) => dateOf(i).slice(0,4);
 
 console.log(getTrending());
