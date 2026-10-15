@@ -26,9 +26,9 @@ const Home = () => {
       <Hero items={trending.data?.results} loading={trending.loading} />
       <div className="mt-10 relative z-10">
          <MediaRow title="Trending this week" items={trending.data?.results} loading={trending.loading}/>
-         <MediaRow title="Popular movies" items={popularMovies.data?.results} type="movies" loading={popularMovies.loading}/>
-         <MediaRow title="Now in Cinemas" items={ nowPlaying.data?.results} type="movies" loading={nowPlaying.loading}/>
-         <MediaRow title="Top rated movies" items={ topMovies.data?.results} type="movies" loading={topMovies.loading}/>
+         <MediaRow title="Popular movies" items={popularMovies.data?.results} type="movie" loading={popularMovies.loading}/>
+         <MediaRow title="Now in Cinemas" items={ nowPlaying.data?.results} type="movie" loading={nowPlaying.loading}/>
+         <MediaRow title="Top rated movies" items={ topMovies.data?.results} type="movie" loading={topMovies.loading}/>
          <MediaRow title="Popular series" items={ popularSeries.data?.results} type="tv" loading={popularSeries.loading}/>
          <MediaRow title="Airing now" items={ airing.data?.results} type="tv" loading={airing.loading}/>
          <MediaRow title="Top rated series" items={ topSeries.data?.results} type="tv" loading={topSeries.loading}/>
