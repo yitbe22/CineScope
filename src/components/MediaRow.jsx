@@ -36,6 +36,7 @@ const MediaRow = ({title, items, loading, type}) => {
               ))
            )
               :items?.map((it) => (
+                
                <MediaCard 
                    key={it.id}
                    item={it}
