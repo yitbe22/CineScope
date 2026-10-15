@@ -23,11 +23,10 @@ body {
 
 /* Glassmorphism: translucent background + blur + thin light border + soft shadow */
 .glass {
-  background: rgb(255 255 255 / 0.08);
-  backdrop-filter: blur(20px) saturate(160%);
-  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  background: rgb(255 255 255 / 0.16);
+  backdrop-filter: blur(36px) saturate(140%);
   border: 1px solid rgb(255 255 255 / 0.15);
-  box-shadow: 0 8px 32px rgb(0 0 0 / 0.37);
+   box-shadow: 0 8px 32px rgb(0 0 0 / 0.37);
 }
 
 /* Hide scrollbars on horizontal rows */
