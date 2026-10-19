@@ -45,7 +45,8 @@ const Hero = ({items, loading}) => {
                      {titleOf(currentList)}
                   </h1>
                   <p className="text-sm sm:text-base text-white/75 line-clamp-3 mt-4">{currentList.overview}</p>
-                  <Link to='/movies/:id' className="mt-6 inline-flex items-center gap-2 rounded-full bg-white px-5 py-2 text-sm text-black font-bold transition hover:bg-white/85"><Info strokeWidth={1.5}/>View details</Link>
+                  <Link to={`/${currentList.media_type}/${currentList.id}`} className="mt-6 inline-flex items-center gap-2 rounded-full bg-white px-5 py-2 text-sm text-black font-bold transition hover:bg-white/85"><Info 
+                  strokeWidth={1.5}/>View details</Link>
                </div>
 
                     <div className="mt-8 flex gap-2">

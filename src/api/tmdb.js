@@ -30,4 +30,8 @@ export const titleOf = (i) => i.title || i.name || 'Untitled';
 export const dateOf = (i) => i.first_air_date || i.release_date || '';
 export const yearOf = (i) => dateOf(i).slice(0,4);
 
-console.log(getTrending());
+export const searchMulti = (q, page=1) => {
+   return request(`/search/multi?query=${encodeURIComponent(q)}&pages=${page}`)}
+
+
+

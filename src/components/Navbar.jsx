@@ -1,6 +1,6 @@
 import { Clapperboard, Search, Menu, X } from "lucide-react"
-import { NavLink } from "react-router-dom"
-import { useState } from "react"
+import { NavLink, useLocation, useNavigate } from "react-router-dom"
+import { useEffect, useState } from "react"
 
 
 const links = [
@@ -12,6 +12,13 @@ const links = [
 
 const Navbar = () => {
     const [open, setOpen] = useState(false);
+    const [q, setQ] = useState('');
+    const { pathname} = useLocation();
+    const navigate = useNavigate();
+
+    useEffect(() => {
+       setOpen(false)
+      }, [pathname]);
    
     const linkClass = ({ isActive }) =>
     `rounded-full px-4 py-1.5 text-sm font-medium transition hover:text-white ${
@@ -22,13 +29,21 @@ const Navbar = () => {
       isActive ? "bg-white/10 text-white" : "text-white/60"
     }`
 
+    const submit = (e) => {
+         e.preventDefault();
+         const term = q.trim();
+         if (term) navigate(`/search?q=${encodeURIComponent(term)}`);
+    }
+
 
 
     const searchForm = ( extra = "", size = "py-1.5") => (
-        <form role="search" className={extra}>
+        <form onSubmit={submit} role="search" className={extra}>
               <div className={`flex items-center gap-1.5 rounded-full bg-white/10 px-3.5 ${size} focus-within:bg-white/20`}>
                     <Search strokeWidth={1.75} size={16} className="text-white/40"/>
                     <input 
+                       value={q}
+                       onChange={(e) => setQ(e.target.value)}
                        type="text" 
                        placeholder="Search..." 
                        aria-label="Search movies and series"
