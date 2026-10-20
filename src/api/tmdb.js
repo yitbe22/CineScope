@@ -24,7 +24,24 @@ export const getList = (type, list, page=1) => (
 )
 
 export const getDetails = (type, id ) => 
-    request(`/${type}/${id}?append_to_response=credits,videos,similar`)
+    request(`/${type}/${id}?append_to_response=credits,videos,similar`);
+
+export const getGenres = (type) => request(`/genre/${type}/list`);
+export const discover = (type, { genre, page = 1, sort = 'popularity.desc' }) => {
+  let url = `/discover/${type}?sort_by=${sort}&page=${page}`
+
+  if (genre) url += `&with_genres=${genre}`
+
+  if (sort.startsWith('vote_average')) url += '&vote_count.gte=200'
+
+  if (sort.includes('date')) {
+    const today = new Date().toISOString().slice(0, 10) 
+    const field = type === 'tv' ? 'first_air_date' : 'primary_release_date'
+    url += `&${field}.lte=${today}&vote_count.gte=5`
+  }
+  
+  return request(url)
+}
 
 export const titleOf = (i) => i.title || i.name || 'Untitled';
 export const dateOf = (i) => i.first_air_date || i.release_date || '';

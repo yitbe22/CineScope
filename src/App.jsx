@@ -4,6 +4,7 @@ import Home from "./Pages/Home"
 import Footer from './components/Footer'
 import Search from './Pages/Search'
 import Details from './Pages/Details'
+import Browse from './Pages/Browse'
 
 const App = () => {
   return (
@@ -14,6 +15,9 @@ const App = () => {
                <Route path='/' element={<Home /> } />
                <Route path="/search" element={<Search />} />
                <Route path="/:type/:id" element={<Details />} />
+               <Route path="/movies" element={<Browse key="movies" type="movie"/>}/>
+               <Route path="/series" element={<Browse key="tv" type="tv"/>}/>
+
            </Routes>
         </main>
         <Footer /> 
