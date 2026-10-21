@@ -6,6 +6,7 @@ const Footer = () => {
        <p className="mx-auto max-w-xl">
           This product uses the TMDB API but is not endorsed or certified TMDB. CineScope is discovery-only learning project and does not hostor stream any content.
        </p>
+       <p className="mt-1">Developed by Yitbarek</p>
        <a 
         href="https://www.themoviedb.org"
         target="_blank"

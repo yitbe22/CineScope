@@ -43,6 +43,8 @@ export const discover = (type, { genre, page = 1, sort = 'popularity.desc' }) =>
   return request(url)
 }
 
+export const getSeason = (id, season) => request(`/tv/${id}/season/${season}`);
+
 export const titleOf = (i) => i.title || i.name || 'Untitled';
 export const dateOf = (i) => i.first_air_date || i.release_date || '';
 export const yearOf = (i) => dateOf(i).slice(0,4);
