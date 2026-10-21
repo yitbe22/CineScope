@@ -47,6 +47,8 @@ const Details = () => {
     return <div className="h-screen animate-pulse bg-white/5" />;
   }
 
+  console.log(seasonQ.data?.episodes)
+
   return (
     <div>
       <div className="relative h-[55vh] min-h-90 w-full overflow-hidden md:h-[70vh]">
@@ -189,12 +191,18 @@ const Details = () => {
               {seasonQ.data?.episodes.map((ep) => (
                 <div key={ep.id} className="flex gap-3 glass rounded-2xl p-3">
                   {ep.still_path ? (
-                    <img
+                    <>
+                        <img
                       src={img(ep.still_path, "w300")}
                       alt={ep.name}
                       loading="lazy"
-                      className="h-20 w-32 shrink-0 rounded-2xl object-cover sm:h-24 sm:w-40"
-                    />
+                      className=" relative h-20 w-32 shrink-0 rounded-2xl object-cover sm:h-24 sm:w-40"
+                    /> 
+                     <span className="bg-surface/90 flex gap-1 items-center text-xs font-light absolute top-2 left-2 px-1.5 py-0.5 rounded-full "><Star strokeWidth={1.5} size={10} fill="#FCC600"color="#FCC600"/> {ep.vote_average.toFixed(1)}</span>
+
+                    </>
+                   
+                    
                   ) : (
                     <div className="h-20 w-32 shrink-0 rounded-2xl bg-surface sm:h-24 sm:w-40" />
                   )}
